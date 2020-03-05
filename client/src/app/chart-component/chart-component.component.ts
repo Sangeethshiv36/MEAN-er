@@ -76,7 +76,7 @@ export class ChartComponentComponent implements OnInit {
       plotOptions: {
         bar: {
           dataLabels: {
-            enabled: true
+            enabled: false
           }
         }
       },
