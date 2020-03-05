@@ -1,8 +1,10 @@
 require('./config/config');
 require('./models/db');
+require('./config/passportConfig');
 
 const express = require('express');
 const cors = require('cors');
+const passport = require('passport');
 
 const routeIndex = require('./routes/index.router');
 
@@ -12,6 +14,7 @@ app.use(express.json({ extended: false }));
 
 app.get('/', (req, res) => res.json({ content: 'welcome' }));
 app.use(cors());
+app.use(passport.initialize());
 app.use('/api', routeIndex);
 
 app.use((err, req, res, next) => {
