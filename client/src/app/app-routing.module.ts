@@ -1,3 +1,4 @@
+import { ChartComponentComponent } from './chart-component/chart-component.component';
 import { AuthGuard } from './auth/auth.guard';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
@@ -18,6 +19,9 @@ const routes: Routes = [
   },
   {
     path: 'userprofile', component: UserProfileComponent, canActivate: [AuthGuard]
+  },
+  {
+    path: 'chart', component: ChartComponentComponent, canActivate: [AuthGuard]
   },
   {
     path: '', redirectTo: '/login', pathMatch: 'full',

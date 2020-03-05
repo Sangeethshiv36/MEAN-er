@@ -14,6 +14,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { AuthGuard } from 'src/app/auth/auth.guard';
 import { AuthInterceptor } from 'src/app/auth/auth.interceptor';
+import { ChartComponentComponent } from './chart-component/chart-component.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AuthInterceptor } from 'src/app/auth/auth.interceptor';
     UserComponent,
     SignUpComponent,
     UserProfileComponent,
-    SignInComponent
+    SignInComponent,
+    ChartComponentComponent
   ],
   imports: [
     BrowserModule,

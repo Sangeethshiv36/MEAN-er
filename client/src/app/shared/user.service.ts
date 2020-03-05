@@ -29,6 +29,10 @@ export class UserService {
     return this.http.get(environment.apiBaseUrl + '/userprofile');
   }
 
+  getChartData() {
+    return this.http.get(environment.apiBaseUrl + '/chartData');
+  }
+
   setToken(token: string) {
     localStorage.setItem('token', token);
   }
