@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const passport = require('passport');
+const _ = require('lodash');
 
 const chartDb = require('../data.json');
 const User = mongoose.model('User');

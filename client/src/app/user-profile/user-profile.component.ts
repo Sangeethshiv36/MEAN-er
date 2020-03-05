@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/shared/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-
-  constructor() { }
+  userDetails;
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+    this.userService.getUserProfile().subscribe(
+      res => {
+        this.userDetails = res['user'];
+      },
+      err => { }
+    );
+  }
+
+  onLogout() {
+    this.userService.deleteToken();
+    this.router.navigate(['/login']);
   }
 
 }

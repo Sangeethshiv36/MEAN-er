@@ -2,7 +2,7 @@ import { UserService } from 'src/app/shared/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { AuthGuard } from 'src/app/auth/auth.guard';
+import { AuthInterceptor } from 'src/app/auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,11 @@ import { AuthGuard } from 'src/app/auth/auth.guard';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthGuard, UserService],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }, AuthGuard, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
