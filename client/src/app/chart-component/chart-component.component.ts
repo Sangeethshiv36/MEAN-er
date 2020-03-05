@@ -27,22 +27,16 @@ export class ChartComponentComponent implements OnInit {
 
   public plotChart(chartData: any) {
     let massData = [];
-    let prestigeData = [];
 
     chartData.rows.map((elem) => {
-      if (elem[0].value === "MASS") {
-        massData.push({ name: elem[1].value, data: [(elem[2].value / 1000000)] });
+      let index = massData.findIndex((elem1) => {
+        return elem[1].value === elem1.name;
+      });
+      if (index >= 0) {
+        massData[index].data.push(elem[2].value / 1000000);
       } else {
-        prestigeData.push({ name: elem[1].value, data: (elem[2].value / 1000000) });
+        massData.push({ name: elem[1].value, data: [(elem[2].value / 1000000)] });
       }
-    });
-
-    massData.map((elem) => {
-      prestigeData.map((elem1) => {
-        if (elem.name === elem1.name) {
-          elem.data.push(elem1.data);
-        }
-      })
     });
 
     const options = {
